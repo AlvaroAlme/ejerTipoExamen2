@@ -1,10 +1,3 @@
-package Libro;
-
-
-
-
-
-
 
 public class Comic extends Libro {
 
@@ -17,8 +10,8 @@ public class Comic extends Libro {
         super();
     }
 
-    public Comic (String titulo, String nombreAutor, String apellidoAutor, String ISBN, int anioPublicacion, String dibujantePrincipal, String color, int numEntregas){
-        super(titulo, nombreAutor, apellidoAutor, ISBN, anioPublicacion );
+    public Comic (String titulo, String nombreAutor, String apellidoAutor, String ISBN, int anioPublicacion,Persona personaPrestataria, String dibujantePrincipal, String color, int numEntregas){
+        super(titulo, nombreAutor, apellidoAutor, ISBN, anioPublicacion, personaPrestataria );
         this.dibujantePrincipal = dibujantePrincipal;
         this.color = color;
         this.numEntregas = numEntregas;
@@ -61,8 +54,7 @@ public class Comic extends Libro {
 
 
     @Override
-    public double calcularPenalizacion(){
-        int diasRetraso = 0;
+    public double calcularPenalizacion(int diasRetraso){
         double penalizacion = 0;
         if(diasRetraso < 3){
             System.out.println("No hay penalizacion si tiene menos de 3 dias de retraso");

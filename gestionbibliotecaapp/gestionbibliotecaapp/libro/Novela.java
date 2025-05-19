@@ -1,4 +1,4 @@
-package Libro;
+
 
 
 
@@ -12,8 +12,8 @@ public class Novela extends Libro {
         super();
     }
 
-    public Novela(String titulo, String nombreAutor, String apellidoAutor, String ISBN, int anioPublicacion, String genero, int numPaginas, boolean versionDigital){
-        super();
+    public Novela(String titulo, String nombreAutor, String apellidoAutor, String ISBN, int anioPublicacion,Persona personaPrestataria, String genero, int numPaginas, boolean versionDigital){
+        super(titulo, nombreAutor,apellidoAutor,ISBN, anioPublicacion, personaPrestataria);
         this.genero = genero;
         this.numPaginas = numPaginas;
         this.versionDigital = versionDigital;
@@ -45,9 +45,8 @@ public class Novela extends Libro {
 
 
      @Override
-    public double calcularPenalizacion(){
-        int diasRetraso = 0;
-        double penalizacion = 0;
+    public double calcularPenalizacion(int diasRetraso){
+        double penalizacion;
         
         return penalizacion = diasRetraso * 0.5;
 

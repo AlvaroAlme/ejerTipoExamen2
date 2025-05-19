@@ -1,4 +1,4 @@
-package gestionBibliotecaApp.menu;
+package menu;
 
 /**
  * Una pregunta que espera una respuesta de texto.

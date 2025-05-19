@@ -42,7 +42,7 @@ public class Persona{
         this.dni = dni;
     }
 
-    public Date getFechaNacimiento() {
+    public int getFechaNacimiento() {
         return fechaNacimiento;
     }
 

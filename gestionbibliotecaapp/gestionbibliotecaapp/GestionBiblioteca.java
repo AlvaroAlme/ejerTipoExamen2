@@ -1,5 +1,3 @@
-package gestionBibliotecaApp;
-import libro.Libro;
 
 public class GestionBiblioteca {
     
@@ -7,15 +5,16 @@ public class GestionBiblioteca {
 
     public GestionBiblioteca(){
         super();
-        listadoLibro = new Libro[150]
+        listadoLibro = new Libro[150];
     }
 
     public Libro[] getListadoLibro(){
         return this.listadoLibro;
     }
 
+    //Elimina el parametro persona que no estaba utilizando.
     public boolean registrarLibro(Libro libro, Persona persona) throws IllegalArgumentException{
-
+        persona = null;
         for(int i = 0; i<listadoLibro.length; i++){
            if(libro.getISBN().equals(listadoLibro[i].getISBN())){
             throw new IllegalArgumentException("El ISBN introducido ya existe");
@@ -54,14 +53,12 @@ public class GestionBiblioteca {
         for(int i = 0; i < listadoLibro.length && listadoLibro[i] != null; i++){
             if(listadoLibro[i].getISBN().matches(isbn) && listadoLibro[i].isDisponiblePrestamo()){
                 listadoLibro[i].setPersonaPrestataria(persona);
-                listadoLibro[i].setIsDisponiblePrestamo(isDisponiblePrestamo:false)
+                listadoLibro[i].setDisponiblePrestamo(false);
                 return true;
             }
-            return false;
-        }
-
+            }
+        
         return false;
-
     }
 
     public double calcularPenalizacion(String isbn, int diasRetraso){

@@ -1,3 +1,4 @@
+import menu.Menu;
 
 public class Main {
     
@@ -28,7 +29,7 @@ public class Main {
         }
     }
 
-    public void registrarLibro(GestionBiblioteca gestionBiblioteca){
+    public static void registrarLibro(GestionBiblioteca gestionBiblioteca){
         String tituloLibro = Menu.preguntarTexto("Introduce el titulod el libro: ");
         String nombreAutor = Menu.preguntarTexto("Introduce el nombre del autor: ");
         String apellidosAutor = Menu.preguntarTexto("Introduce el apellido del autor: ");
@@ -37,27 +38,29 @@ public class Main {
 
         Persona persona = null;
 
-        int tipoLibro = Menu.pregunarOpcion(new String[]{"Comic", "Novela", "Libro de texto"})
+        int tipoLibro = Menu.preguntarOpcion(new String[]{"Comic", "Novela", "Libro de texto"});
 
         switch(tipoLibro){
             case 1:
-                String dibujantePrincipal = Menu.pregunarTexto("Introduce el nombre del dibujante principal: ");
-                String color = Menu.pregunarTexto("¿Color o blanco y negro?: ");
+                Comic comic = new Comic();
+                String dibujantePrincipal = Menu.preguntarTexto("Introduce el nombre del dibujante principal: ");
+                String color = Menu.preguntarTexto("¿Color o blanco y negro?: ");
                 boolean isSerie = Menu.preguntaBoolean("¿Es una serie? ");
                 if(isSerie){
                     int numEntregas = Menu.preguntarEntero("¿Cuantas entragas tiene?: ");
+                    comic.setNumEntregas(numEntregas);
                 }
 
-                Comic comic = new Comic();
+                
                 comic.setTitulo(tituloLibro);
                 comic.setNombreAutor(nombreAutor);
-                comic.setApellidoAutor(apellidoAutor);
+                comic.setApellidoAutor(apellidosAutor);
                 comic.setISBN(ISBN);
                 comic.setAnioPublicacion(anioPublicacion);
                 comic.setDibujantePrincipal(dibujantePrincipal);
                 comic.setColor(color);
-                comic.isSerie(isSerie);
-                comic.setNumEntregas(numEntregas);
+                comic.setIsSerie(isSerie);
+                
 
                 gestionBiblioteca.registrarLibro(comic, persona);
 
@@ -70,7 +73,7 @@ public class Main {
                 Novela novela = new Novela();
                 novela.setTitulo(tituloLibro);
                 novela.setNombreAutor(nombreAutor);
-                novela.setApellidoAutor(apellidoAutor);
+                novela.setApellidoAutor(apellidosAutor);
                 novela.setISBN(ISBN);
                 novela.setAnioPublicacion(anioPublicacion);
                 novela.setGenero(genero);
@@ -88,7 +91,7 @@ public class Main {
                 LibroDeTexto libroTexto = new LibroDeTexto();
                 libroTexto.setTitulo(tituloLibro);
                 libroTexto.setNombreAutor(nombreAutor);
-                libroTexto.setApellidoAutor(apellidoAutor);
+                libroTexto.setApellidoAutor(apellidosAutor);
                 libroTexto.setISBN(ISBN);
                 libroTexto.setAnioPublicacion(anioPublicacion);
                 libroTexto.setCurso(curso);
@@ -101,7 +104,7 @@ public class Main {
     }
 
     public static void buscarLibro(GestionBiblioteca gestionBiblioteca){
-        String isbn = Menu.pregunarTexto("Introduce un ISBN valido");
+        String isbn = Menu.preguntarTexto("Introduce un ISBN valido");
         String infoLibro = gestionBiblioteca.informacionLibro(isbn);
 
         if(infoLibro != null){
@@ -137,7 +140,8 @@ public class Main {
 
     public static void calcularPenalizacion(GestionBiblioteca gestionBiblioteca){
         int diasRetraso = Menu.preguntarEntero("Introduce el numero de dias de retraso: ");
-        double penalizacion = gestionBiblioteca.calcularPenalizacion(diasRetraso);
+        String isbn = Menu.preguntarTexto("Introduce el ISBN del libro: ");
+        double penalizacion = gestionBiblioteca.calcularPenalizacion(isbn, diasRetraso);
 
         System.out.println("El coste de la penalizacion es de: " + penalizacion);
     }

@@ -1,4 +1,4 @@
-package gestionBibliotecaApp.gestionBibliotecaApp;
+
 import java.util.Date;
 
 public class Persona{
@@ -6,13 +6,13 @@ public class Persona{
     private String nombre;
     private String apellido;
     private String dni;
-    private Date fechaNacimiento;
+    private int fechaNacimiento;
 
     public Persona(){
         super();
     }
 
-    public Persona(String nombre, String apellido, String dni, Date fechaNacimiento){
+    public Persona(String nombre, String apellido, String dni, int fechaNacimiento){
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -43,11 +43,11 @@ public class Persona{
         this.dni = dni;
     }
 
-    public Date getFechaNacimiento() {
+    public int getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(int fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

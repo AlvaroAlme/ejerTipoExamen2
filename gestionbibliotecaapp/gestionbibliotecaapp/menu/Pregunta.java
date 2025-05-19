@@ -1,4 +1,4 @@
-package gestionBibliotecaApp.menu;
+package menu;
 
 import java.util.Scanner;
 

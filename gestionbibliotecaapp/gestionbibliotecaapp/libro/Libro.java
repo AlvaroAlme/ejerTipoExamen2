@@ -1,8 +1,4 @@
 
-
-
-import gestionbibliotecaapp.gestionbibliotecaapp.Persona;
-
 public abstract class Libro implements Prestable {
     
     private String titulo;
@@ -19,12 +15,13 @@ public abstract class Libro implements Prestable {
         super();
     }
 
-    protected Libro(String titulo, String nombreAutor, String apellidoAutor, String ISBN, int anioPublicacion){
+    protected Libro(String titulo, String nombreAutor, String apellidoAutor, String ISBN, int anioPublicacion, Persona personaPrestataria){
         this.titulo = titulo;
         this.nombreAutor =  nombreAutor;
         this.apellidoAutor = apellidoAutor;
         this.ISBN = ISBN;
         this.anioPublicacion = anioPublicacion;
+        this.personaPrestataria = personaPrestataria;
         
     }
 
@@ -60,7 +57,7 @@ public abstract class Libro implements Prestable {
         ISBN = iSBN;
     }
 
-    public Date getAnioPublicacion() {
+    public int getAnioPublicacion() {
         return anioPublicacion;
     }
 
@@ -76,9 +73,17 @@ public abstract class Libro implements Prestable {
         this.disponiblePrestamo = disponiblePrestamo;
     }
 
+    public Persona getPersonaPrestataria(){
+        return personaPrestataria;
+    }
+
+    public void setPersonaPrestataria(Persona personaPrestataria){
+        this.personaPrestataria = personaPrestataria;
+    }
+
     
 
-    public abstract double calcularPenalizacion();
+    public abstract double calcularPenalizacion(int diasRetraso);
 
     public String informacionComun(){
         return "Titulo: " + this.getTitulo() + "/n" + "Nombre autor: " + this.getNombreAutor() + "/n" + "Apellido autor: " +  this.getApellidoAutor() + "/n" + "ISBN: " + this.getISBN() + "/n" + "Año publicacion: " + this.getAnioPublicacion() + "/n" + "Disponible para prestamo: " +this.isDisponiblePrestamo();

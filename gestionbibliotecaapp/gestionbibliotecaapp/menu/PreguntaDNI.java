@@ -1,4 +1,4 @@
-package gestionBibliotecaApp.menu;
+package menu;
 
 public class PreguntaDNI extends PreguntaTexto {
     

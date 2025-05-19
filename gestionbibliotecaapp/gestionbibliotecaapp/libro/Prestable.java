@@ -1,6 +1,6 @@
-package gestionbibliotecaapp.gestionbibliotecaapp.libro;
+
 
 public interface Prestable {
     
-    public double calcularPenalizacion();
+    public double calcularPenalizacion(int diasRetraso);
 }

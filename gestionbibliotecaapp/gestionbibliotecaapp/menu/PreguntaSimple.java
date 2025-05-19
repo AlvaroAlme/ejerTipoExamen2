@@ -1,4 +1,4 @@
-package gestionBibliotecaApp.menu;
+package menu;
 
 /**
  * Clase abstracta que representa una pregunta con una única respuesta.

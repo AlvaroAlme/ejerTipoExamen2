@@ -1,5 +1,3 @@
-package Libro;
-
 
 public class LibroDeTexto extends Libro {
     
@@ -11,8 +9,8 @@ public class LibroDeTexto extends Libro {
         super();
     }
 
-    public LibroDeTexto(String titulo, String nombreAutor, String apellidoAutor, String ISBN, int anioPublicacion, String curso, String asignatura, double precio){
-        super(titulo, nombreAutor, apellidoAutor, ISBN, anioPublicacion);
+    public LibroDeTexto(String titulo, String nombreAutor, String apellidoAutor, String ISBN, int anioPublicacion,Persona personaPrestataria, String curso, String asignatura, double precio){
+        super(titulo, nombreAutor, apellidoAutor, ISBN, anioPublicacion, personaPrestataria);
         this.curso = curso;
         this.asignatura = asignatura;
         this.precio = precio;
@@ -43,9 +41,9 @@ public class LibroDeTexto extends Libro {
     }
 
    @Override
-    public double calcularPenalizacion(){
-        int diasRetraso = 0;
-        double penalizacion = 0;
+    public double calcularPenalizacion(int diasRetraso){
+        
+        double penalizacion;
         if(diasRetraso > 3){
             penalizacion = diasRetraso * 0.3 + 2;
         } else {
