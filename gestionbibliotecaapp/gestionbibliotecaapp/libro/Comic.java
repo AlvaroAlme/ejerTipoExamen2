@@ -2,7 +2,7 @@
 public class Comic extends Libro {
 
     private String dibujantePrincipal;
-    private String color;
+    private boolean isColor;
     private boolean isSerie;
     private int numEntregas;
 
@@ -13,7 +13,7 @@ public class Comic extends Libro {
     public Comic (String titulo, String nombreAutor, String apellidoAutor, String ISBN, int anioPublicacion,Persona personaPrestataria, String dibujantePrincipal, String color, int numEntregas){
         super(titulo, nombreAutor, apellidoAutor, ISBN, anioPublicacion, personaPrestataria );
         this.dibujantePrincipal = dibujantePrincipal;
-        this.color = color;
+        this.isColor = isColor;
         this.numEntregas = numEntregas;
         this.isSerie = isSerie;
     }
@@ -26,12 +26,12 @@ public class Comic extends Libro {
         this.dibujantePrincipal = dibujantePrincipal;
     }
 
-    public String getColor() {
-        return color;
+    public boolean isIsColor() {
+        return isColor;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setIsColor(boolean isColor) {
+        this.isColor = isColor;
     }
 
     public int getNumEntregas() {
@@ -67,7 +67,7 @@ public class Comic extends Libro {
 
     @Override
     public String toString() {
-        return "Comic [dibujantePrincipal=" + dibujantePrincipal + ", color=" + color + ", numEntregas=" + numEntregas
+        return "Comic [dibujantePrincipal=" + dibujantePrincipal + ", color=" + isColor + ", numEntregas=" + numEntregas
                 + ", toString()=" + super.toString() + "]";
     }
 

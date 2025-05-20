@@ -16,14 +16,19 @@ public class Main {
                     registrarLibro(gestionBiblioteca);
                 break;
                 case 2:
+                    buscarLibro(gestionBiblioteca);
                 break;
                 case 3:
+                    listadoLibros(gestionBiblioteca);
                 break;
                 case 4:
+                    prestarLibro(gestionBiblioteca);
                 break;
                 case 5:
+                    calcularPenalizacion(gestionBiblioteca);
                 break;
                 case 6:
+                    System.out.println("Hasta otra!");
                 break;
             }
         }
@@ -37,6 +42,7 @@ public class Main {
         int anioPublicacion = Menu.preguntarEntero("Introduce el año de publicacion: ");
 
         Persona persona = null;
+        Libro libro = null;
 
         int tipoLibro = Menu.preguntarOpcion(new String[]{"Comic", "Novela", "Libro de texto"});
 
@@ -44,7 +50,7 @@ public class Main {
             case 1:
                 Comic comic = new Comic();
                 String dibujantePrincipal = Menu.preguntarTexto("Introduce el nombre del dibujante principal: ");
-                String color = Menu.preguntarTexto("¿Color o blanco y negro?: ");
+                boolean esColor = Menu.preguntaBoolean("¿Es un comic a color?: ");
                 boolean isSerie = Menu.preguntaBoolean("¿Es una serie? ");
                 if(isSerie){
                     int numEntregas = Menu.preguntarEntero("¿Cuantas entragas tiene?: ");
@@ -58,11 +64,11 @@ public class Main {
                 comic.setISBN(ISBN);
                 comic.setAnioPublicacion(anioPublicacion);
                 comic.setDibujantePrincipal(dibujantePrincipal);
-                comic.setColor(color);
+                comic.setIsColor(esColor);
                 comic.setIsSerie(isSerie);
                 
 
-                gestionBiblioteca.registrarLibro(comic, persona);
+                libro = comic;
 
             break;
             case 2:
@@ -80,7 +86,7 @@ public class Main {
                 novela.setNumPaginas(numPaginas);
                 novela.setVersionDigital(tieneVersionDigital);
 
-                gestionBiblioteca.registrarLibro(novela, persona);
+                libro = novela;
 
             break;
             case 3:
@@ -98,9 +104,10 @@ public class Main {
                 libroTexto.setAsignatura(asignatura);
                 libroTexto.setPrecio(precio);
 
-                gestionBiblioteca.registrarLibro(libroTexto, persona);
+                libro = libroTexto;
             break;
         }
+        gestionBiblioteca.registrarLibro(libro, persona);
     }
 
     public static void buscarLibro(GestionBiblioteca gestionBiblioteca){
